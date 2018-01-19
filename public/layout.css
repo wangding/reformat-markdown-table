@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  padding: 15px 20px;
+}
+
+#md-table {
+  width: 100%;
+  height: 400px;
+  margin: 10px 0;
+  font-family: 宋体;
+  font-size: 0.9em;
+}
+
+#reformat-btn {
+  width: 70px;
+  height: 30px;
+  font-size: 0.9em;
+}
