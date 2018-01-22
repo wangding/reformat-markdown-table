@@ -1,3 +1,0 @@
----
-  env:
-    mocha: true # Adds all of the Mocha testing global variables
