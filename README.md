@@ -67,5 +67,5 @@ cat table.md | reformat-markdown-table-cn
 cat table.md | reformat-markdown-table-cn > table2.md
 ```
 
-或者直接在 http://reformat.wangding.in 网页上对 MarkDown 表格格式化。
+或者直接在 http://reformat.wangding.co 网页上对 MarkDown 表格格式化。
 
