@@ -12,6 +12,16 @@ module.exports = function (grunt) {
         dest: 'dist/index.html'
       }
     },
+    qiniu_qupload: {
+      default_options: {
+        options: {
+          ak: 'QINIU_AK',
+          sk: 'QINIU_SK',
+          bucket: 'app-reformat',
+          assets: [{src: 'dist', prefix: ''}]
+        }
+      }
+    },
     uglify: {
       'dist/bundle.js': 'public/bundle.js'
     },
@@ -27,7 +37,9 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('@wangding/grunt-qiniu-qupload');
   grunt.loadTasks('./grunt-task');
 
   grunt.registerTask('default', ['build', 'cssmin', 'htmlmin', 'uglify', 'copy']);
+  grunt.registerTask('upload', ['qiniu_qupload']);
 };

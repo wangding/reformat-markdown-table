@@ -36,6 +36,7 @@
     "grunt-contrib-htmlmin": "^2.4.0",
     "grunt-contrib-jshint": "^1.1.0",
     "grunt-contrib-uglify": "^3.3.0",
+    "@wangding/grunt-qiniu-qupload": "^0.2.1",
     "grunt-usemin": "^3.1.1",
     "istanbul": "^0.3.2",
     "mocha": "^1.21.4"
