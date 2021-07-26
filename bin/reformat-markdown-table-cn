@@ -2,22 +2,63 @@
 
 'use strict';
 
-var reformat = require('../lib/reformat-table.js'),
-    input = '';
+const reformatReadmeDoc = require('../lib/reformat-table.js');
+
+const OPTIONS = ['-v', '-h'];
+const HELP = `
+格式化Markdown表格
+
+-h 帮助
+-v 自定义对照，格式如下
+  中文汉字数量对照英文字符数量
+  1:2对应，合适等比字体
+  '{"0": 0, "1": 2}'
+  [默认] IDEA大致对应
+  '{"0": 0, "1": 2, "2": 3, "3": 5}'
+  自定义对应
+  '{"0": 0, "1": 2, "2": 3, "3": 5, "4": 7}'
+`;
+
+let input = '', args = {};
 
 process.stdin.setEncoding('utf8');
 
-process.stdin.on('readable', function() {
-  var chunk = process.stdin.read();
+process.stdin.on('readable', function () {
+  args = checkArgv(process.argv.slice(2));
+
+  const chunk = process.stdin.read();
   if (chunk !== null) {
     input += chunk;
-  }
-  else if (!input) {
+  } else if (!input) {
     process.exit();
   }
 });
 
-process.stdin.on('end', function() {
-  var output = reformat(input);
+process.stdin.on('end', function () {
+  const output = reformatReadmeDoc(input, args);
   process.stdout.write(output);
 });
+
+function checkArgv(argv) {
+  const args = {}
+  if (argv.length === 0) {
+    return args
+  }
+  if (argv[0] === '-h') {
+    console.log(HELP);
+    process.exit();
+  }
+  argv.forEach((v, i) => {
+    if (v.startsWith('-') && OPTIONS.includes(v)) {
+      if (argv[i + 1].startsWith('-')) {
+        args[v] = null;
+      } else {
+        args[v] = argv[i + 1];
+      }
+    }
+  })
+  return args;
+}
+
+
+

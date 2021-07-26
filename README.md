@@ -15,13 +15,11 @@
 >1. 原仓库代码不支持中文，也就是说在 MarkDown 表格中包含中文时，不能很好的对齐；
 >2. 原仓库代码不支持表格每行前后有空白的单元格；
 
-## 功能
+**特别声明1：**
 
-用来对 GFM MarkDown 表格源代码进行对齐美化。
-
-| 网页版 | 命令行版 |
-| :---: | :---: |
-| ![网页版](public/browser.gif)   | ![命令行版](public/cmd-line.gif)  |
+> 1. 在原有的基础上修改，可以匹配整个markdown，格式化表格
+> 2. 自定义汉字对照数量，尽量解决不是等比字体的问题
+> 。源仓库地址: https://github.com/wangding/reformat-markdown-table
 
 例如，GFM MarkDown 表格代码如下：
 
@@ -36,23 +34,11 @@
 通过 reformat-markdown-table-cn 工具的处理之后：
 
 ```
-| 姓名   |     电话    |             邮箱 |
-|--------|:-----------:|-----------------:|
+| 姓名   |     电话     |              邮箱 |
+|-------|:-----------:|-----------------:|
 | 王顶   | 13582027613 | 408542507@qq.com |
 | 郭玉朝 | 13812347652 |    baldy@163.com |
-|        |     abc     |              def |
-```
-
-注意，这个示例包括对原仓库的两点改进：
-1. 表格的前四行，表格文字包括中文，中文是两个半角字符宽度，可以很好对齐；
-2. 表格的最后一行，包括一个空白单元格，也可以很好的对齐。原仓库是直接删除空白单元格的。
-
-## 安装
-
-运行下面的命令完成安装。
-
-```
-sudo npm install -g reformat-markdown-table-cn
+|       |     abc     |              def |
 ```
 
 ## 使用
@@ -60,12 +46,28 @@ sudo npm install -g reformat-markdown-table-cn
 编辑一个 MarkDown 文件，该 Markdown 文件中只包含 GFM MarkDown 表格内容，假设文件名为：table.md，运行下面的命令：
 
 ```bash
-cat table.md | reformat-markdown-table-cn
+
+#格式化Markdown表格
+#
+#-h 帮助
+#-v 自定义对照，格式如下
+#  中文汉字数量对照英文字符数量
+#  1:2对应，合适等比字体
+#  '{"0": 0, "1": 2}'
+#  IDEA大致对应
+#  '{"0": 0, "1": 2, "2": 3, "3": 5}'
+#  自定义对应
+#  '{"0": 0, "1": 2, "2": 3, "3": 5, "4": 7}'
+
+cat table.md | reformat-markdown-table-cn -v '{"0": 0, "1": 2}'
+cat table.md | reformat-markdown-table-cn -v '{"0": 0, "1": 2, "2": 3, "3": 5}'
 
 # or
 
 cat table.md | reformat-markdown-table-cn > table2.md
+cat table.md | reformat-markdown-table-cn -v '{"0": 0, "1": 2}' > table2.md
+cat table.md | reformat-markdown-table-cn -v '{"0": 0, "1": 2, "2": 3, "3": 5}' > table2.md
 ```
 
-或者直接在 http://reformat.wangding.co 网页上对 MarkDown 表格格式化。
+
 
