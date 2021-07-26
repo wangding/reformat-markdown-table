@@ -58,19 +58,21 @@
 #  中文汉字数量对照英文字符数量
 #  1:2对应，合适等比字体
 #  '{"0": 0, "1": 2}'
-#  IDEA大致对应
+#  [默认] IDEA大致对应
 #  '{"0": 0, "1": 2, "2": 3, "3": 5}'
-#  自定义对应
+#  自定义对应，按照需求自定义向后添加
 #  '{"0": 0, "1": 2, "2": 3, "3": 5, "4": 7}'
 
-cat table.md | reformat-markdown-table-cn -v '{"0": 0, "1": 2}'
-cat table.md | reformat-markdown-table-cn -v '{"0": 0, "1": 2, "2": 3, "3": 5}'
+cd bin
+
+cat table.md | node reformat-markdown-table-cn -v '{"0": 0, "1": 2}'
+cat table.md | node reformat-markdown-table-cn -v '{"0": 0, "1": 2, "2": 3, "3": 5}'
 
 # or
 
-cat table.md | reformat-markdown-table-cn > table2.md
-cat table.md | reformat-markdown-table-cn -v '{"0": 0, "1": 2}' > table2.md
-cat table.md | reformat-markdown-table-cn -v '{"0": 0, "1": 2, "2": 3, "3": 5}' > table2.md
+cat table.md | node reformat-markdown-table-cn > table2.md
+cat table.md | node reformat-markdown-table-cn -v '{"0": 0, "1": 2}' > table2.md
+cat table.md | node reformat-markdown-table-cn -v '{"0": 0, "1": 2, "2": 3, "3": 5}' > table2.md
 ```
 
 
