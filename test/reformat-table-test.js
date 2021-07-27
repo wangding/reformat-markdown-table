@@ -61,7 +61,6 @@ describe('reformat-table', function () {
         '| 郭玉朝 | 15703277652 |    baldy@163.com |',
         '|        |     abc     |              def |'
       ].join('\n');
-    console.log(reformatReadmeDoc(input, {'-v': '{"0": 0, "1": 2}'}));
 
     expect(reformatReadmeDoc(input, {'-v': '{"0": 0, "1": 2}'})).to.eql(output);
   });
