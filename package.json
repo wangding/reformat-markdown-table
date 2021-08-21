@@ -1,11 +1,11 @@
 {
-  "name": "reformat-markdown-table-cn",
-  "version": "1.2.0",
+  "name": "reformat-markdown-cn",
+  "version": "1.3.0",
   "description": "Reformat and align markdown tables with Chinese",
   "main": "index.js",
   "preferGlobal": true,
   "bin": {
-    "reformat-markdown-table-cn": "bin/reformat-markdown-table-cn"
+    "reformat-markdown-cn": "bin/reformat-markdown-table-cn"
   },
   "scripts": {
     "test": "eslint . && istanbul cover --report lcov _mocha -- --ui bdd --check-leaks --recursive --slow 50 --reporter spec test",

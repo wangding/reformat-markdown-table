@@ -1,4 +1,4 @@
-# reformat-markdown-table
+# reformat-markdown-cn
 
 [![Version](http://img.shields.io/npm/v/reformat-markdown-table.svg?style=flat)](https://www.npmjs.org/package/reformat-markdown-table)
 [![Build Status](https://img.shields.io/travis/dbrockman/reformat-markdown-table/master.svg?style=flat)](https://travis-ci.org/dbrockman/reformat-markdown-table)
@@ -34,7 +34,7 @@
 |  | abc | def
 ```
 
-通过 reformat-markdown-table-cn 工具的处理之后：
+通过 reformat-markdown-cn 工具的处理之后：
 
 ```
 ## 标题
@@ -48,14 +48,17 @@
 
 ## 使用
 
-编辑一个 MarkDown 文件，该 Markdown 文件中只包含 GFM MarkDown 表格内容，假设文件名为：table.md，运行下面的命令：
+编辑一个 MarkDown 文件，该 Markdown 文件中只包含 GFM MarkDown 表格内容，运行下面的命令：
 
 ```bash
 
 #格式化Markdown表格
 
-./reformat-markdown-table-cn -h                        
-Usage: reformat-markdown-table-cn [options] <files|directories|globs>
+npm i reformat-markdown-cn -g
+
+reformat-markdown-cn -h
+
+Usage: reformat-markdown-cn [options] <files|directories|globs>
 
 Options:
   -V, --version          output the version number
@@ -73,15 +76,15 @@ Options:
 cd bin
 
 # 格式化一个文件
-./reformat-markdown-table-cn ../markdown/example.md 
+reformat-markdown-cn ./markdown/example.md 
 # 格式化多个文件
-./reformat-markdown-table-cn ../markdown/**/*.md
+reformat-markdown-cn ./markdown/**/*.md
 # 自定义字符对应
-./reformat-markdown-table-cn ../markdown/example.md -R '{"0": 0, "1": 2}'
-./reformat-markdown-table-cn ../markdown/**/*.md -R '{"0": 0, "1": 2}'
+reformat-markdown-cn ./markdown/example.md -R '{"0": 0, "1": 2}'
+reformat-markdown-cn ./markdown/**/*.md -R '{"0": 0, "1": 2}'
 # 终端输出内容，不会覆盖源文件
-./reformat-markdown-table-cn ../markdown/example.md -R '{"0": 0, "1": 2}' -C
-./reformat-markdown-table-cn ../markdown/**/*.md -R '{"0": 0, "1": 2}' -C
+reformat-markdown-cn ./markdown/example.md -R '{"0": 0, "1": 2}' -C
+reformat-markdown-cn ./markdown/**/*.md -R '{"0": 0, "1": 2}' -C
 ```
 
 
