@@ -1,8 +1,9 @@
 {
   "name": "reformat-markdown-cn",
-  "version": "1.3.0",
+  "version": "1.3.2",
   "description": "Reformat and align markdown tables with Chinese",
   "main": "index.js",
+  "types": "index.d.ts",
   "preferGlobal": true,
   "bin": {
     "reformat-markdown-cn": "bin/reformat-markdown-table-cn"
@@ -35,5 +36,12 @@
   "dependencies": {
     "commander": "^8.1.0",
     "glob": "^7.1.7"
-  }
+  },
+  "keywords": [
+    "markdown",
+    "talbe",
+    "cn",
+    "format",
+    "reformat"
+  ]
 }
