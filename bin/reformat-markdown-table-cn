@@ -4,61 +4,50 @@
 
 const reformatReadmeDoc = require('../lib/reformat-table.js');
 
-const OPTIONS = ['-v', '-h'];
-const HELP = `
-格式化Markdown表格
+const {Command} = require('commander')
+const glob = require('glob')
+const program = new Command()
+const fs = require('fs')
 
--h 帮助
--v 自定义对照，格式如下
-  中文汉字数量对照英文字符数量
-  1:2对应，合适等比字体
-  '{"0": 0, "1": 2}'
-  [默认] IDEA大致对应
-  '{"0": 0, "1": 2, "2": 3, "3": 5}'
-  自定义对应
-  '{"0": 0, "1": 2, "2": 3, "3": 5, "4": 7}'
-`;
+program
+  .version(require('../package').version)
+  .usage('[options] <files|directories|globs>')
+  .showHelpAfterError()
+  // 放defaultValue，就显示不出正确的格式，"会被转义 \"，而且只会默认存在
+  .option('-R, --reformat [type]', 'check another rules and reformat markdown table, ' +
+    '(default: {"0": 0, "1": 2, "2": 3, "3": 5})')
+  .option('-C, --cat', 'only cat format markdown content', false)
 
-let input = '', args = {};
+function handler() {
+  program.parse()
+  const opts = program.opts()
 
-process.stdin.setEncoding('utf8');
-
-process.stdin.on('readable', function () {
-  args = checkArgv(process.argv.slice(2));
-
-  const chunk = process.stdin.read();
-  if (chunk !== null) {
-    input += chunk;
-  } else if (!input) {
-    process.exit();
+  if (program.args.length === 0) {
+    return program.help()
   }
-});
 
-process.stdin.on('end', function () {
-  const output = reformatReadmeDoc(input, args);
-  process.stdout.write(output);
-});
+  if (!opts.cat) {
+    console.log(`Welcome to reformat-markdown-table! version: ${require('../package').version}\n`)
+  }
 
-function checkArgv(argv) {
-  const args = {}
-  if (argv.length === 0) {
-    return args
+  const fileList = program.args.flatMap(x => glob.sync(x))
+
+  let formatString = ''
+
+  // 自定义格式
+  if (opts.reformat) {
+    formatString = opts.reformat === true ? '' : opts.reformat
   }
-  if (argv[0] === '-h') {
-    console.log(HELP);
-    process.exit();
-  }
-  argv.forEach((v, i) => {
-    if (v.startsWith('-') && OPTIONS.includes(v)) {
-      if (argv[i + 1].startsWith('-')) {
-        args[v] = null;
-      } else {
-        args[v] = argv[i + 1];
-      }
+
+  fileList.forEach(item => {
+    const content = fs.readFileSync(item).toString('utf-8')
+    const result = reformatReadmeDoc(content, formatString)
+    if (opts.cat) {
+      console.log(result)
+    } else {
+      fs.writeFileSync(item, result)
     }
   })
-  return args;
 }
 
-
-
+handler()

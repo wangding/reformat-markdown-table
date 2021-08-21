@@ -20,7 +20,7 @@ describe('reformat-table', function () {
         '| eee      | fff      |          |       |'
       ].join('\n');
 
-    expect(reformatReadmeDoc(input, {})).to.eql(output);
+    expect(reformatReadmeDoc(input, '')).to.eql(output);
   });
 
   it('should reformat a markdown table 2', function () {
@@ -39,7 +39,7 @@ describe('reformat-table', function () {
         '|       |     abc     |              def |'
       ].join('\n');
 
-    expect(reformatReadmeDoc(input, {})).to.eql(output);
+    expect(reformatReadmeDoc(input, '')).to.eql(output);
   });
 
   it('should reformat a markdown table 3', function () {
@@ -62,7 +62,7 @@ describe('reformat-table', function () {
         '|        |     abc     |              def |'
       ].join('\n');
 
-    expect(reformatReadmeDoc(input, {'-v': '{"0": 0, "1": 2}'})).to.eql(output);
+    expect(reformatReadmeDoc(input, '{"0": 0, "1": 2}')).to.eql(output);
   });
 
 });

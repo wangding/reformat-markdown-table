@@ -18,7 +18,8 @@
 **特别声明1：**
 
 > 1. 在原有的基础上修改，可以匹配整个markdown，格式化表格
-> 2. 自定义汉字对照数量，尽量解决不是等比字体的问题
+> 2. 新增匹配文件夹下的多个markdown文件，直接覆盖源文件
+> 3. 自定义汉字对照数量，尽量解决不是等比字体的问题
 > 。源仓库地址: https://github.com/wangding/reformat-markdown-table
 
 例如，GFM MarkDown 表格代码如下：
@@ -38,11 +39,11 @@
 ```
 ## 标题
 
-| 姓名   |     电话    |             邮箱 |
-|--------|:-----------:|-----------------:|
+| 姓名   |     电话     |              邮箱 |
+|-------|:-----------:|-----------------:|
 | 王顶   | 13582027613 | 408542507@qq.com |
-| 郭玉朝 | 15703277652 |    baldy@163.com |
-|        |     abc     |              def |
+| 郭玉朝 | 13812347652 |    baldy@163.com |
+|       |     abc     |              def |
 ```
 
 ## 使用
@@ -52,10 +53,16 @@
 ```bash
 
 #格式化Markdown表格
-#
-#-h 帮助
-#-v 自定义对照，格式如下
-#  中文汉字数量对照英文字符数量
+
+./reformat-markdown-table-cn -h                        
+Usage: reformat-markdown-table-cn [options] <files|directories|globs>
+
+Options:
+  -V, --version          output the version number
+  -R, --reformat [type]  check another rules and reformat markdown table, (default: {"0": 0, "1": 2, "2": 3, "3": 5})
+  -C, --cat              only cat format markdown content (default: false)
+  -h, --help             display help for command
+
 #  1:2对应，合适等比字体
 #  '{"0": 0, "1": 2}'
 #  [默认] IDEA大致对应
@@ -65,14 +72,16 @@
 
 cd bin
 
-cat table.md | node reformat-markdown-table-cn -v '{"0": 0, "1": 2}'
-cat table.md | node reformat-markdown-table-cn -v '{"0": 0, "1": 2, "2": 3, "3": 5}'
-
-# or
-
-cat table.md | node reformat-markdown-table-cn > table2.md
-cat table.md | node reformat-markdown-table-cn -v '{"0": 0, "1": 2}' > table2.md
-cat table.md | node reformat-markdown-table-cn -v '{"0": 0, "1": 2, "2": 3, "3": 5}' > table2.md
+# 格式化一个文件
+./reformat-markdown-table-cn ../markdown/example.md 
+# 格式化多个文件
+./reformat-markdown-table-cn ../markdown/**/*.md
+# 自定义字符对应
+./reformat-markdown-table-cn ../markdown/example.md -R '{"0": 0, "1": 2}'
+./reformat-markdown-table-cn ../markdown/**/*.md -R '{"0": 0, "1": 2}'
+# 终端输出内容，不会覆盖源文件
+./reformat-markdown-table-cn ../markdown/example.md -R '{"0": 0, "1": 2}' -C
+./reformat-markdown-table-cn ../markdown/**/*.md -R '{"0": 0, "1": 2}' -C
 ```
 
 

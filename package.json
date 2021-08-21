@@ -31,5 +31,9 @@
     "eslint": "^0.8.1",
     "istanbul": "^0.3.2",
     "mocha": "^1.21.4"
+  },
+  "dependencies": {
+    "commander": "^8.1.0",
+    "glob": "^7.1.7"
   }
 }
