@@ -53,7 +53,7 @@
 
 #格式化Markdown表格
 
-npm i reformat-markdown-cn -g
+npm i @skyfury/reformat-markdown-cn -g
 
 reformat-markdown-cn -h
 
@@ -89,7 +89,7 @@ reformat-markdown-cn ./markdown/**/*.md -R '{"0": 0, "1": 2}' -C
 ## 代码使用
 
 ```javascript
-const { reformat } = require('reformat-markdown-cn')
+const { reformat } = require('@skyfury/reformat-markdown-cn')
 const content = `
 ## 标题
 
