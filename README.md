@@ -1,10 +1,9 @@
 # reformat-markdown-cn
 
-[![Version](http://img.shields.io/npm/v/reformat-markdown-table.svg?style=flat)](https://www.npmjs.org/package/reformat-markdown-table)
+[![Version](https://img.shields.io/badge/npm-6+-green.svg)](https://www.npmjs.org/package/reformat-markdown-table)
+[![node](https://img.shields.io/badge/node->_v14-green.svg)](https://nodejs.org/en/)
 [![Build Status](https://img.shields.io/travis/dbrockman/reformat-markdown-table/master.svg?style=flat)](https://travis-ci.org/dbrockman/reformat-markdown-table)
 [![Coverage Status](http://img.shields.io/coveralls/dbrockman/reformat-markdown-table.svg?style=flat)](https://coveralls.io/r/dbrockman/reformat-markdown-table?branch=master)
-[![Dependency Status](https://david-dm.org/dbrockman/reformat-markdown-table.svg?style=flat)](https://david-dm.org/dbrockman/reformat-markdown-table)
-[![devDependency Status](https://david-dm.org/dbrockman/reformat-markdown-table/dev-status.svg?style=flat)](https://david-dm.org/dbrockman/reformat-markdown-table#info=devDependencies)
 
 
 **特别声明：**
@@ -46,7 +45,7 @@
 |       |     abc     |              def |
 ```
 
-## 使用
+## 终端使用
 
 编辑一个 MarkDown 文件，该 Markdown 文件中只包含 GFM MarkDown 表格内容，运行下面的命令：
 
@@ -87,5 +86,22 @@ reformat-markdown-cn ./markdown/example.md -R '{"0": 0, "1": 2}' -C
 reformat-markdown-cn ./markdown/**/*.md -R '{"0": 0, "1": 2}' -C
 ```
 
+## 代码使用
+
+```javascript
+const { reformat } = require('reformat-markdown-cn')
+const content = `
+## 标题
+
+| 姓名 | 电话 | 邮箱 |
+| --- | :---: | ---: |
+| 王顶 | 13582027613 | 408542507@qq.com |
+| 郭玉朝 | 13812347652 | baldy@163.com |
+|  | abc | def
+`
+const result = reformat(content)
+
+console.log(result)
+```
 
 
