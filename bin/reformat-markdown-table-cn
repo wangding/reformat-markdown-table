@@ -2,7 +2,7 @@
 
 'use strict';
 
-const reformatReadmeDoc = require('../lib/reformat-table.js');
+const reformatReadmeDoc = require('../dist').reformatReadmeDoc;
 
 const {Command} = require('commander')
 const glob = require('glob')

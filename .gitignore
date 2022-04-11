@@ -24,4 +24,5 @@ pids
 
 # IntelliJ
 .idea
-package-lock.json
+
+dist

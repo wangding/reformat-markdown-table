@@ -1,27 +1,23 @@
-'use strict';
-
-const expect = require('chai').expect,
-  reformatReadmeDoc = require('../lib/reformat-table.js');
-
+import { reformatReadmeDoc } from '../lib/reformat-table'
+import 'should'
 
 describe('reformat-table', function () {
-
   it('should reformat a markdown table 1', function () {
     const input = [
         '| Header 1 |   Header 2   | Header 3|H|',
         '| --- | --- | :---: | :---: |',
         '| aaa |bbb| cccc | ddd |',
-        '   |   eee |fff'
+        '   |   eee |fff',
       ].join('\n'),
       output = [
         '| Header 1 | Header 2 | Header 3 |   H   |',
         '|----------|----------|:--------:|:-----:|',
         '| aaa      | bbb      |   cccc   |  ddd  |',
-        '| eee      | fff      |          |       |'
-      ].join('\n');
+        '| eee      | fff      |          |       |',
+      ].join('\n')
 
-    expect(reformatReadmeDoc(input, '')).to.eql(output);
-  });
+    reformatReadmeDoc(input, '').should.eql(output)
+  })
 
   it('should reformat a markdown table 2', function () {
     const input = [
@@ -29,18 +25,18 @@ describe('reformat-table', function () {
         '| --- | :---: | ---: |',
         '| 王顶 | 13582027613 | 408542507@qq.com |',
         '| 郭玉朝 | 15703277652 | baldy@163.com |',
-        '|  | abc | def'
+        '|  | abc | def',
       ].join('\n'),
       output = [
         '| 姓名   |     电话     |              邮箱 |',
         '|-------|:-----------:|-----------------:|',
         '| 王顶   | 13582027613 | 408542507@qq.com |',
         '| 郭玉朝 | 15703277652 |    baldy@163.com |',
-        '|       |     abc     |              def |'
-      ].join('\n');
+        '|       |     abc     |              def |',
+      ].join('\n')
 
-    expect(reformatReadmeDoc(input, '')).to.eql(output);
-  });
+    reformatReadmeDoc(input, '').should.eql(output)
+  })
 
   it('should reformat a markdown table 3', function () {
     const input = [
@@ -50,7 +46,7 @@ describe('reformat-table', function () {
         '| --- | :---: | ---: |',
         '| 王顶 | 13582027613 | 408542507@qq.com |',
         '| 郭玉朝 | 15703277652 | baldy@163.com |',
-        '|  | abc | def'
+        '|  | abc | def',
       ].join('\n'),
       output = [
         '## 标题',
@@ -59,10 +55,10 @@ describe('reformat-table', function () {
         '|--------|:-----------:|-----------------:|',
         '| 王顶   | 13582027613 | 408542507@qq.com |',
         '| 郭玉朝 | 15703277652 |    baldy@163.com |',
-        '|        |     abc     |              def |'
-      ].join('\n');
+        '|        |     abc     |              def |',
+      ].join('\n')
 
-    expect(reformatReadmeDoc(input, '{"0": 0, "1": 2}')).to.eql(output);
-  });
+    reformatReadmeDoc(input, '{"0": 0, "1": 2}').should.eql(output)
+  })
 
-});
+})

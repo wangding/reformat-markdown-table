@@ -1,25 +1,24 @@
 {
   "name": "@skyfury/reformat-markdown-cn",
-  "version": "1.3.4",
+  "version": "1.4.0",
   "description": "Reformat and align markdown tables with Chinese",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
   "preferGlobal": true,
   "bin": {
     "reformat-markdown-cn": "bin/reformat-markdown-table-cn"
   },
   "scripts": {
-    "test": "eslint . && istanbul cover --report lcov _mocha -- --ui bdd --check-leaks --recursive --slow 50 --reporter spec test",
+    "test": "eslint . && mocha -r ts-node/register test/**/*.ts",
+    "cov": "nyc npm run test",
     "lint": "eslint .",
-    "coveralls": "cat ./coverage/lcov.info | coveralls"
+    "build": "rm -rf dist && tsc -p tsconfig.json"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/littleboyfury/reformat-markdown-table.git"
   },
-  "author": "David Brockman Smoliansky",
+  "author": "skyfury",
   "contributors": [
-    "wangding <408542507@qq.com> (https://github.com/wangding)",
     "littleboy <littleboyfury@gmail.com> (https://github.com/littleboyfury/)"
   ],
   "license": "MIT",
@@ -28,14 +27,23 @@
   },
   "homepage": "https://github.com/littleboyfury/reformat-markdown-table",
   "devDependencies": {
-    "chai": "^1.9.1",
-    "eslint": "^0.8.1",
-    "istanbul": "^0.3.2",
-    "mocha": "^1.21.4"
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
+    "@types/mocha": "^9.1.0",
+    "@types/node": "^17.0.23",
+    "@typescript-eslint/eslint-plugin": "^5.18.0",
+    "@typescript-eslint/parser": "^5.18.0",
+    "eslint": "^8.13.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^9.2.2",
+    "nyc": "^15.1.0",
+    "should": "^13.2.3",
+    "source-map-support": "^0.5.21",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
   },
   "dependencies": {
-    "commander": "^8.1.0",
-    "glob": "^7.1.7"
+    "commander": "^9.1.0",
+    "glob": "^7.2.0"
   },
   "keywords": [
     "markdown",
@@ -43,5 +51,33 @@
     "cn",
     "format",
     "reformat"
-  ]
+  ],
+  "files": [
+    "bin/reformat-markdown-table-cn",
+    "dist/**/*.js"
+  ],
+  "nyc": {
+    "extends": "@istanbuljs/nyc-config-typescript",
+    "check-coverage": true,
+    "all": true,
+    "report-dir": "coverage",
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "**/*.d.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true
+  }
 }
