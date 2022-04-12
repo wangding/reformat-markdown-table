@@ -26,3 +26,4 @@ pids
 .idea
 
 dist
+.nyc_output

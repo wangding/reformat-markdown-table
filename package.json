@@ -62,7 +62,7 @@
     "all": true,
     "report-dir": "coverage",
     "include": [
-      "src/**/*.ts"
+      "lib/**/*.ts"
     ],
     "exclude": [
       "**/*.d.ts"

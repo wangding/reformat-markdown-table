@@ -1,21 +1,3 @@
-// 'use strict'
-//
-// exports.splitStringToTable = splitStringToTable
-// exports.getMaxLengthPerColumn = getMaxLengthPerColumn
-// exports.getMaxLength = getMaxLength
-// exports.padHeaderSeparatorString = padHeaderSeparatorString
-// exports.getAlignment = getAlignment
-// exports.fillInMissingColumns = fillInMissingColumns
-// exports.getColumn = getColumn
-// exports.trim = trim
-// exports.padStringWithAlignment = padStringWithAlignment
-// exports.padLeft = padLeft
-// exports.padRight = padRight
-// exports.padLeftAndRight = padLeftAndRight
-// exports.getPadding = getPadding
-// exports.repeatStr = repeatStr
-// exports.setFormatString = setFormatString
-
 // 汉字数量对应空格数量
 let format = {
   '0': 0,
