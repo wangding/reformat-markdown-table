@@ -1,6 +1,6 @@
 {
   "name": "@skyfury/reformat-markdown-cn",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "description": "Reformat and align markdown tables with Chinese",
   "main": "dist/index.js",
   "preferGlobal": true,

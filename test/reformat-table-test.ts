@@ -8,12 +8,18 @@ describe('reformat-table', function () {
         '| --- | --- | :---: | :---: |',
         '| aaa |bbb| cccc | ddd |',
         '   |   eee |fff',
+        '```',
+        '| Header 1 |   Header 2   | Header 3|H|',
+        '```',
       ].join('\n'),
       output = [
         '| Header 1 | Header 2 | Header 3 |   H   |',
         '|----------|----------|:--------:|:-----:|',
         '| aaa      | bbb      |   cccc   |  ddd  |',
         '| eee      | fff      |          |       |',
+        '```',
+        '| Header 1 |   Header 2   | Header 3|H|',
+        '```'
       ].join('\n')
 
     reformatReadmeDoc(input, '').should.eql(output)

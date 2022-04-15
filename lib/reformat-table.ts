@@ -26,8 +26,16 @@ function reformat(str: string) {
 export function reformatReadmeDoc(str: string, formatString: string) {
   utils.setFormatString(formatString)
   let i = 0, j = 0, items = str.split('\n')
+  let codeBlock = false
   for (; i < items.length;) {
-    if (items[i].trimLeft().startsWith('|') && (items[i].length - items[i].replace(/\|/g, '').length >= 2)) {
+    if (items[i].trimLeft().startsWith('```')) {
+      codeBlock = !codeBlock
+    }
+    if (
+      !codeBlock
+      && items[i].trimLeft().startsWith('|')
+      && (items[i].length - items[i].replace(/\|/g, '').length >= 2)
+    ) {
       j = i
       while (j < items.length &&
       items[j].trimLeft().startsWith('|') &&
