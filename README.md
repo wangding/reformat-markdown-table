@@ -30,7 +30,7 @@
 | --- | :---: | ---: |
 | 王顶 | 13582027613 | 408542507@qq.com |
 | 郭玉朝 | 13812347652 | baldy@163.com |
-|  | abc | def
+|  | abc | def |
 ```
 
 通过 reformat-markdown-table-cn 工具的处理之后：
